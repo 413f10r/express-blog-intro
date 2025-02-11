@@ -27,11 +27,56 @@ const app = express();
 
 const port = 3000;
 
+//leggere la cartella public
+app.use(express.static('public'));
+
+
 app.get("/", (req, res) => {
 
     res.send(`Server del mio blog`);
 
 })
+
+app.get("/bacheca", (req, res) => {
+    const posts = [
+        {
+            titolo: "Ciambellone della nonna",
+            contenuto: "La ricetta del ciambellone più buono del mondo, perfetto per la colazione o la merenda.",
+            immagine: "img/ciambellone.jpeg",
+            tags: ["dolci", "cucina italiana", "ricette della nonna"]
+        },
+        {
+            titolo: "Cracker di barbabietola fatti in casa",
+            contenuto: "Croccanti e gustosi, questi cracker sono un'alternativa sana e sfiziosa agli snack confezionati.",
+            immagine: "img/cracker_barbabietola.jpeg",
+            tags: ["snack", "ricette salutari", "barbabietola"]
+        },
+        {
+            titolo: "Pane fritto dolce: una delizia per il palato",
+            contenuto: "Un dolce semplice e goloso, perfetto per concludere un pasto in bellezza.",
+            immagine: "img/pane_fritto_dolce.jpeg",
+            tags: ["dolci fritti", "ricette regionali", "cucina povera"]
+        },
+        {
+            titolo: "Pasta alla barbabietola: un piatto colorato e gustoso",
+            contenuto: "Un primo piatto originale e ricco di sapore, perfetto per una cena tra amici.",
+            immagine: "img/pasta_barbabietola.jpeg",
+            tags: ["primi piatti", "ricette vegetariane", "barbabietola"]
+        },
+        {
+            titolo: "Torta paesana: un classico della cucina tradizionale",
+            contenuto: "Un dolce rustico e genuino, perfetto per una merenda in campagna o un picnic all'aria aperta.",
+            immagine: "img/torta_paesana.jpeg",
+            tags: ["dolci tradizionali", "ricette regionali", "cucina italiana"]
+        }
+    ];
+
+
+
+    res.json(posts);
+
+})
+
 
 //attivazione del server: http:localhost:3000
 app.listen(port, () => {
@@ -40,35 +85,4 @@ app.listen(port, () => {
 
 
 
-const posts = [
-    {
-        titolo: "Titolo del primo post",
-        contenuto: "Contenuto del primo post",
-        immagine: "url/dell/immagine1.jpg",
-        tags: ["tag1", "tag2", "tag3"]
-    },
-    {
-        titolo: "Titolo del secondo post",
-        contenuto: "Contenuto del secondo post",
-        immagine: "url/dell/immagine2.jpg",
-        tags: ["tag4", "tag5"]
-    },
-    {
-        titolo: "Titolo del terzo post",
-        contenuto: "Contenuto del terzo post",
-        immagine: "url/dell/immagine3.jpg",
-        tags: ["tag6", "tag7", "tag8", "tag9"]
-    },
-    {
-        titolo: "Titolo del quarto post",
-        contenuto: "Contenuto del quarto post",
-        immagine: "url/dell/immagine4.jpg",
-        tags: ["tag10", "tag11"]
-    },
-    {
-        titolo: "Titolo del quinto post",
-        contenuto: "Contenuto del quinto post",
-        immagine: "url/dell/immagine5.jpg",
-        tags: ["tag12"]
-    }
-];
+
